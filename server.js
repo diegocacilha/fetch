@@ -20,8 +20,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 // 	res.send('teste');
 // });
 
-app.post('/teste', upload.none(), (req,res) => {
-	console.log(req.body.nome);
+app.post('/teste', upload.single('foto'), (req,res) => {
+	console.log(req.body);
 	res.send('teste');
 });
 
