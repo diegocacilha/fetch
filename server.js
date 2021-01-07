@@ -12,17 +12,12 @@ app.use(express.static('./static/'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// app.post('/teste', (req,res,next) => {
-// 	console.log('Isso é um middleware?');
-// 	next;
-// }, (req,res) => {
-// 	console.log(req.body.nome);
-// 	res.send('teste');
-// });
-
-app.post('/teste', upload.single('foto'), (req,res) => {
+app.post('/teste', upload.none(), (req,res) => {
 	console.log(req.body);
-	res.send('teste');
+	res.status(401).json({
+		error: false,
+		msg: 'Deu boa aqui'
+	});
 });
 
 app.get('/', (req,res) => {
